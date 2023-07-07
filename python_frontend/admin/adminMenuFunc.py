@@ -1,5 +1,23 @@
-import index, os
+import index, os, time
 import admin.adminLogin as adminLogin
+
+def endFunction(csr, adminID):
+    index.printformat()
+    print(" 1) Back")
+    print(" 2) Logout")
+    print(" 3) Exit")
+    opt = int(input(" Enter option : "))
+    if (opt == 2):
+        return index.start(csr)
+    elif (opt == 3):
+        print("\n Thank you and visit again.")
+        index.printformat()
+        time.sleep(0.6)
+        csr.execute("COMMIT")
+        exit()
+    else:
+        index.printformat()
+        adminLogin.adminMenu(csr, adminID)
 
 def viewInv(csr, adminID):
     os.system('cls')
@@ -16,8 +34,7 @@ def viewInv(csr, adminID):
         print(f"  Product ID  :\t{x[1]}")
         print(f"  Price       :\t{x[2]}")
         print(f"  Stock Qty   :\t{x[3]}")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def addInv(csr, adminID):
     name = input(" Enter Product name   : ")
@@ -31,8 +48,7 @@ def addInv(csr, adminID):
     ''')
     print("\n -------------------------------------------")
     print("\n Product successfully added to inventory.")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def remInv(csr, adminID):
     prodID = int(input( " Enter product ID : "))
@@ -47,8 +63,7 @@ def remInv(csr, adminID):
     else:
         csr.execute(f"DELETE FROM Inventory WHERE ProdID = {prodID}")
         print("\n Product successfully removed from inventory.")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def updStock(csr, adminID):
     prodID = int(input(" Enter product ID      : "))
@@ -69,8 +84,7 @@ def updStock(csr, adminID):
             WHERE ProdID = {prodID}
         ''')
         print("\n Product stock successfully updated.")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def updPrice(csr, adminID):
     prodID = int(input(" Enter product ID  : "))
@@ -91,8 +105,7 @@ def updPrice(csr, adminID):
             WHERE ProdID = {prodID}
         ''')
         print("\n Product price successfully updated.")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def viewCust(csr, adminID):
     os.system('cls')
@@ -136,8 +149,7 @@ def viewCust(csr, adminID):
             print("\n -- Account --------------------------------------")
             print(f"  Username        :\t{x[10]}")
             print(f"  Password        :\t{x[11]}")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def viewOrders(csr, adminID):
     os.system('cls')
@@ -158,8 +170,7 @@ def viewOrders(csr, adminID):
             print(f"  Payment mode :\t{x[2]}")
             print(f"  Amount       :\t{x[3]}")
             print(f"  Status       :\t{x[4]}")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def changeOrderStatus(csr, adminID):
     orderID = int(input(" Enter order ID                           : "))
@@ -171,10 +182,11 @@ def changeOrderStatus(csr, adminID):
         WHERE OrderID = {orderID}
     ''')
     print("\n Order status successfully updated.")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)
 
 def viewAccStmt(csr, adminID):
+    os.system('cls')
+    print()
     csr.execute(f'''
         SELECT sum(Price * StockQty) FROM Inventory;
     ''')
@@ -190,7 +202,7 @@ def viewAccStmt(csr, adminID):
     for i in totIncome:
         for x in i:
             totIncome = x
-    print(f" Total goods value : {totGoodsVal}")
+    print(f" Account statement:")
+    print(f"\n Total goods value : {totGoodsVal}")
     print(f"\n Total income      : {totIncome}")
-    index.printformat()
-    adminLogin.adminMenu(csr, adminID)
+    endFunction(csr, adminID)

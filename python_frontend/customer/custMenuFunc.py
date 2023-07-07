@@ -1,5 +1,23 @@
-import index, os
+import index, os, time
 import customer.custLogin as custLogin
+
+def endFunction(csr, custID):
+    index.printformat()
+    print(" 1) Back")
+    print(" 2) Logout")
+    print(" 3) Exit")
+    opt = int(input(" Enter option : "))
+    if (opt == 2):
+        return index.start(csr)
+    elif (opt == 3):
+        print("\n Thank you and visit again.")
+        index.printformat()
+        time.sleep(0.6)
+        csr.execute("COMMIT")
+        exit()
+    else:
+        index.printformat()
+        custLogin.custMenu(csr, custID)
 
 def browseProd(csr, custID):
     os.system('cls')
@@ -15,8 +33,7 @@ def browseProd(csr, custID):
         print(" ------------------------------------")
         print(f"  Product ID  :\t{x[1]}")
         print(f"  Price       :\t{x[2]}")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def viewCart(csr, custID):
     os.system('cls')
@@ -38,8 +55,7 @@ def viewCart(csr, custID):
             print(f"  Product ID  :\t{x[1]}")
             print(f"  Price       :\t{x[2]}")
             print(f"  Qty         :\t{x[3]}")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def profile(csr, custID):
     os.system('cls')
@@ -61,8 +77,7 @@ def profile(csr, custID):
     print(f"  Phone             : {x[0][5]}")
     print()
     print(f"  Wallet Balance    : {x[0][6]}")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def addAmt(csr, custID):
     amt = int(input(" Enter amount to add : "))
@@ -72,8 +87,7 @@ def addAmt(csr, custID):
         WHERE CustID = '{custID}'
     ''')
     print("\n Amount successfully added !!")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def addCart(csr, custID):
     prodID = int(input(" Enter Product ID : "))
@@ -89,8 +103,7 @@ def addCart(csr, custID):
     else:
         csr.execute(f"INSERT INTO Cart VALUES ({custID}, {prodID}, {qty})")
         print("\n Product successfully added to cart.")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def emptyCart(csr, custID):
     csr.execute(f'''
@@ -103,8 +116,7 @@ def emptyCart(csr, custID):
     else:
         csr.execute(f"DELETE FROM Cart WHERE CustID = {custID}")
         print(" Cart successfully emptied.")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def checkoutCart(csr, custID):
     csr.execute(f'''
@@ -181,8 +193,7 @@ def checkoutCart(csr, custID):
                     print(" Order placed successfully !!")
                 else:
                     print(" Insufficient wallet balance !!")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def viewOrders(csr, custID):
     os.system('cls')
@@ -201,8 +212,7 @@ def viewOrders(csr, custID):
             print()
             print(f"  Order ID  :\t{x[0]}")
             print(f"  Status    :\t{x[1]}")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
 
 def getCateg(csr, custID):
     csr.execute(f'SELECT Category FROM Customers WHERE CustID = {custID}')
@@ -237,5 +247,4 @@ def changeCateg(csr, custID):
             WHERE CustID = '{custID}'
         ''')
         print(f"\n Changed successfully!\n\n Deducted an amount of Rs. {cost}.")
-    index.printformat()
-    custLogin.custMenu(csr, custID)
+    endFunction(csr, custID)
