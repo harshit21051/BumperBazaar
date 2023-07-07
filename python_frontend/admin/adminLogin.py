@@ -34,7 +34,7 @@ def adminMenu(csr, adminID):
     print("   6) View customer details")
     print("   7) View orders")
     print("   8) Change order status")
-    print("   9) Logout")
+    print("   10) Logout")
     print()
     opt = int(input(" Enter option : "))
     index.printformat()
