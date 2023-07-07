@@ -34,7 +34,7 @@ def adminMenu(csr, adminID):
     print("   6)  View customer details")
     print("   7)  View orders")
     print("   8)  Change order status")
-    print("   9)  View total income")
+    print("   9)  View account statement")
     print("   10) Logout")
     print()
     opt = int(input(" Enter option : "))
@@ -56,6 +56,6 @@ def adminMenu(csr, adminID):
     elif (opt == 8):
         return changeOrderStatus(csr, adminID)
     elif (opt == 9):
-        return viewTotIncome(csr, adminID)
+        return viewAccStmt(csr, adminID)
     else:
         return index.start(csr)

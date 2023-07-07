@@ -171,7 +171,7 @@ def changeOrderStatus(csr, adminID):
     index.printformat()
     adminLogin.adminMenu(csr, adminID)
 
-def viewTotIncome(csr, adminID):
+def viewAccStmt(csr, adminID):
     csr.execute(f'''
         SELECT sum(Amount) FROM Orders
         WHERE PayMode = 'Wallet' OR Status = 'Delivered';
