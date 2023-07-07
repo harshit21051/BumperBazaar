@@ -3,6 +3,7 @@ import admin.adminLogin as adminLogin
 
 def viewInv(csr, adminID):
     os.system('cls')
+    print()
     csr.execute(f'''
         SELECT ProdName, ProdID, Price, StockQty FROM Inventory
     ''')
@@ -95,6 +96,8 @@ def updPrice(csr, adminID):
 
 def viewCust(csr, adminID):
     os.system('cls')
+    print()
+    print("  View customer details:")
     csr.execute("SELECT count(*) FROM CUSTOMERS")
     count = csr.fetchall()
     for i in count:
@@ -102,9 +105,9 @@ def viewCust(csr, adminID):
             count = x
     first = 1000
     last = first + count - 1
-    print(f"\n  Total number of customers : {count}")
-    print(f"\n  First Customer ID : {first}")
-    print(f"\n  Last Customer ID : {last}\n")
+    print(f"\n  -> Total number of customers : {count}")
+    print(f"\n  -> First Customer ID : {first}")
+    print(f"\n  -> Last Customer ID : {last}\n")
     custID = int(input("\n  Enter customer ID : "))
     csr.execute(f'''
         SELECT * FROM Customers
@@ -120,17 +123,17 @@ def viewCust(csr, adminID):
         for x in items:
             print()
             print(f"  {x[1]}")
-            print(" --------------------------------------------")
+            print(" -------------------------------------------------")
             print(f"  Gender          :\t{x[2]}")
             print(f"  Category        :\t{x[3]}")
             print(f"  Email           :\t{x[4]}")
             print(f"  Phone           :\t{x[5]}")
             print(f"  Wallet balance  :\t{x[6]}")
-            print("\n -- Address ---------------------------------")
+            print("\n -- Address --------------------------------------")
             print(f"  House           :\t{x[7]}")
             print(f"  Street          :\t{x[8]}")
             print(f"  City            :\t{x[9]}")
-            print("\n -- Account ---------------------------------")
+            print("\n -- Account --------------------------------------")
             print(f"  Username        :\t{x[10]}")
             print(f"  Password        :\t{x[11]}")
     index.printformat()
@@ -173,6 +176,13 @@ def changeOrderStatus(csr, adminID):
 
 def viewAccStmt(csr, adminID):
     csr.execute(f'''
+        SELECT sum(Price * StockQty) FROM Inventory;
+    ''')
+    totGoodsVal = csr.fetchall()
+    for i in totGoodsVal:
+        for x in i:
+            totGoodsVal = x
+    csr.execute(f'''
         SELECT sum(Amount) FROM Orders
         WHERE PayMode = 'Wallet' OR Status = 'Delivered';
     ''')
@@ -180,6 +190,7 @@ def viewAccStmt(csr, adminID):
     for i in totIncome:
         for x in i:
             totIncome = x
-    print(f" Total income : {totIncome}")
+    print(f" Total goods value : {totGoodsVal}")
+    print(f"\n Total income      : {totIncome}")
     index.printformat()
     adminLogin.adminMenu(csr, adminID)

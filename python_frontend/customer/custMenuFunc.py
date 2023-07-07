@@ -3,6 +3,7 @@ import customer.custLogin as custLogin
 
 def browseProd(csr, custID):
     os.system('cls')
+    print()
     csr.execute(f'''
         SELECT ProdName, ProdID, Price FROM Inventory
     ''')
@@ -19,6 +20,7 @@ def browseProd(csr, custID):
 
 def viewCart(csr, custID):
     os.system('cls')
+    print()
     csr.execute(f'''
         SELECT ProdName, ProdID, Price, Qty
         FROM Inventory NATURAL JOIN Cart
@@ -41,6 +43,7 @@ def viewCart(csr, custID):
 
 def profile(csr, custID):
     os.system('cls')
+    print()
     csr.execute(f'''
         SELECT * FROM Customers
         WHERE CustID = {custID}
@@ -183,6 +186,7 @@ def checkoutCart(csr, custID):
 
 def viewOrders(csr, custID):
     os.system('cls')
+    print()
     csr.execute(f'''
         SELECT OrderID, Status
         FROM Orders
