@@ -26,15 +26,16 @@ def adminLogin(csr):
 def adminMenu(csr, adminID):
     print(f" Welcome Administrator !!")
     print()
-    print("   1) View inventory")
-    print("   2) Add to inventory")
-    print("   3) Remove from inventory")
-    print("   4) Update stock")
-    print("   5) Update price")
-    print("   6) View customer details")
-    print("   7) View orders")
-    print("   8) Change order status")
-    print("   9) Logout")
+    print("   1)  View inventory")
+    print("   2)  Add to inventory")
+    print("   3)  Remove from inventory")
+    print("   4)  Update stock")
+    print("   5)  Update price")
+    print("   6)  View customer details")
+    print("   7)  View orders")
+    print("   8)  Change order status")
+    print("   9)  View total income")
+    print("   10) Logout")
     print()
     opt = int(input(" Enter option : "))
     index.printformat()
@@ -54,5 +55,7 @@ def adminMenu(csr, adminID):
         return viewOrders(csr, adminID)
     elif (opt == 8):
         return changeOrderStatus(csr, adminID)
+    elif (opt == 9):
+        return viewTotIncome(csr, adminID)
     else:
         return index.start(csr)

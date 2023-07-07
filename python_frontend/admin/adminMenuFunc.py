@@ -170,3 +170,16 @@ def changeOrderStatus(csr, adminID):
     print("\n Order status successfully updated.")
     index.printformat()
     adminLogin.adminMenu(csr, adminID)
+
+def viewTotIncome(csr, adminID):
+    csr.execute(f'''
+        SELECT sum(Amount) FROM Orders
+        WHERE PayMode = 'Wallet' OR Status = 'Delivered';
+    ''')
+    totIncome = csr.fetchall()
+    for i in totIncome:
+        for x in i:
+            totIncome = x
+    print(f" Total income : {totIncome}")
+    index.printformat()
+    adminLogin.adminMenu(csr, adminID)
