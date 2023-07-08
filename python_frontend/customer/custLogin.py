@@ -105,6 +105,7 @@ def signup(csr):
     ''')
 
     print("  Registered successfully!!")
+    csr.execute("COMMIT")
     custLogin(csr)
 
 def custMenu(csr, custID):

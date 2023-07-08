@@ -25,7 +25,6 @@ def start(csr):
         print("\n Thank you and visit again.")
         printformat()
         time.sleep(0.6)
-        csr.execute("COMMIT")
         exit()
 
 if __name__ == "__main__":

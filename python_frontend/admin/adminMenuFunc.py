@@ -2,6 +2,7 @@ import index, os, time
 import admin.adminLogin as adminLogin
 
 def endFunction(csr, adminID):
+    csr.execute("COMMIT")
     index.printformat()
     print(" 1) Back")
     print(" 2) Logout")
@@ -13,7 +14,6 @@ def endFunction(csr, adminID):
         print("\n Thank you and visit again.")
         index.printformat()
         time.sleep(0.6)
-        csr.execute("COMMIT")
         exit()
     else:
         index.printformat()

@@ -2,6 +2,7 @@ import index, os, time
 import customer.custLogin as custLogin
 
 def endFunction(csr, custID):
+    csr.execute("COMMIT")
     index.printformat()
     print(" 1) Back")
     print(" 2) Logout")
@@ -13,7 +14,6 @@ def endFunction(csr, custID):
         print("\n Thank you and visit again.")
         index.printformat()
         time.sleep(0.6)
-        csr.execute("COMMIT")
         exit()
     else:
         index.printformat()
@@ -222,6 +222,14 @@ def getCateg(csr, custID):
             categ = x
     return categ
 
+def getWalletBal(csr, custID):
+    csr.execute(f'SELECT WalletBalance FROM Customers WHERE CustID = {custID}')
+    bal = csr.fetchall()
+    for i in bal:
+        for x in i:
+            bal = x
+    return bal
+
 def changeCateg(csr, custID):
     print(f" Choose from below:")
     print()
@@ -238,8 +246,11 @@ def changeCateg(csr, custID):
         newCateg = 'Elite'
         cost = 1000
     oldCateg = getCateg(csr, custID)
+    balance = getWalletBal(csr, custID)
     if oldCateg.lower() == newCateg.lower():
         print("\n Sorry! Same category")
+    elif balance < cost:
+        print("\n Sorry! Insufficient balance")
     else:
         csr.execute(f'''
             UPDATE Customers
