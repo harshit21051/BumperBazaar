@@ -64,10 +64,10 @@ def login(csr):
 def signup(csr):
     os.system('cls')
     print("\n Customer sign up\n")
-    name = input("\n  Name: ")
-    gender = input("\n  Gender (Male/Female): ")
-    email = input("\n  Email: ")
-    phone = input("\n  Phone: ")
+    name = input("\n  Name       : ")
+    gender = input("\n  Gender     : ")
+    email = input("\n  Email      : ")
+    phone = input("\n  Phone      : ")
 
     csr.execute(f'''
         INSERT INTO Customers
@@ -80,10 +80,10 @@ def signup(csr):
     cust_id = csr.lastrowid
 
     # Insert data into the Address table
-    print("\n  Address:")
-    house = input("\n    House: ")
-    street = input("\n    Street: ")
-    city = input("\n    City: ")
+    print("\n  Address")
+    house = input("\n    House    : ")
+    street = input("\n    Street   : ")
+    city = input("\n    City     : ")
 
     csr.execute(f'''
         INSERT INTO Address
@@ -93,9 +93,9 @@ def signup(csr):
     ''')
 
     # Insert data into the Accounts table
-    print("\n  Account:")
-    username = input("\n    Username: ")
-    password = input("\n    Password: ")
+    print("\n  Account")
+    username = input("\n    Username : ")
+    password = input("\n    Password : ")
 
     csr.execute(f'''
         INSERT INTO Accounts
