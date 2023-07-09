@@ -17,7 +17,7 @@
    - Clone this repo and store it in the following directory: C:\xampp\htdocs
    - First run the schema.sql into MySQL Workbench and then run dataset.sql. Your database is now created in your system.
    - To run python program:
-        - Run index.py in python_frontend
+        - Run index.py in python_files directory
    - To view tables in HTML:
         - Open any browser and go to the following link to open the site: http://localhost/BumperBazaar/sql_backend/view_tables
         - To open database portal (phpMyAdmin): http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar
