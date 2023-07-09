@@ -19,5 +19,5 @@
    - To run python program:
         - Run index.py in python_files directory
    - To view tables in HTML:
-        - Open any browser and go to the following link to open the site: http://localhost/BumperBazaar/sql_backend/view_tables
+        - Open any browser and go to the following link to open the site: http://localhost/BumperBazaar/html_files/
         - To open database portal (phpMyAdmin): http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar
