@@ -6,7 +6,6 @@ USE Bumper_Bazaar;
 
     CREATE TABLE IF NOT EXISTS Admin (
         AdminID INT NOT NULL AUTO_INCREMENT,
-        Category ENUM('Normal','Prime','ELite') NOT NULL,
         Password VARCHAR(30) NOT NULL,
         PRIMARY KEY (AdminID)
     );

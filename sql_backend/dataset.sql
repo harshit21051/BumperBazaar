@@ -3,11 +3,11 @@ USE Bumper_Bazaar;
 --  Dumping data for table Admin
 
     INSERT INTO Admin
-        (Category, Password)
+        (Password)
     VALUES
-        ('Normal', 'gauATiD'),
-        ('Prime', 'pN11GscfJ'),
-        ('Elite', 'CP0Ga0')
+        ('gauATiD'),
+        ('pN11GscfJ'),
+        ('CP0Ga0')
     ;
 
 --  Dumping data for table Customers
