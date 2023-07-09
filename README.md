@@ -18,7 +18,7 @@
    - First run the schema.sql into MySQL Workbench and then run dataset.sql. Your database is now created in your system.
    - To run python program:
         - Run index.py in python_files directory
-        - While running the python program, any modification done to the database gets reflected in the website as you can check.
+        - While running the python program, any modification done to the database gets reflected in the website.
    - To view tables in HTML:
         - Open following link: http://localhost/BumperBazaar/html_files/
         - To open database portal (phpMyAdmin): http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar
