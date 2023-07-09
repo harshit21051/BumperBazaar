@@ -26,7 +26,8 @@ To ensure proper functioning of the BumperBazaar website, please follow these st
       - Navigate to the python_files directory and run index.py.
       - While the Python program is running, any modifications made to the database will be reflected in real-time.
   - To view the tables online:
-      - Open the following link in your web browser: http://localhost/BumperBazaar/html_files/.
+      - First open XAMPP control panel and start Apache and MySQL.
+      - Open the following link: http://localhost/BumperBazaar/html_files/.
       - To access the database portal (phpMyAdmin), visit: http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar.
 
 Enjoy using BumperBazaar for your online shopping needs! Should you have any questions or encounter any issues, please don't hesitate to contact us.
