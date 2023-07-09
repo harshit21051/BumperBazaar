@@ -1,5 +1,7 @@
 # BumperBazaar
 
+Welcome to BumperBazaar, an online shopping platform built using Python and MySQL. BumperBazaar provides a command-line interface (CLI) for shopping functionality and utilizes a SQL database as its backend. Additionally, a website has been developed to display tables fetched from the database using PHP and the XAMPP web server.
+
  Tech stack:
  - Python
  - MySQL
@@ -18,7 +20,7 @@
    - First run the schema.sql into MySQL Workbench and then run dataset.sql. Your database is now created in your system.
    - To run python program:
         - Run index.py in python_files directory
-        - While running the python program, any modification done to the database gets reflected in the website.
-   - To view tables in HTML:
+        - While running the python program, any modification done to the database gets reflected at that instant.
+   - To view tables online:
         - Open following link: http://localhost/BumperBazaar/html_files/
         - To open database portal (phpMyAdmin): http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar
