@@ -13,6 +13,7 @@ BumperBazaar is built using the following technologies:
   - CSS
   - PHP
   - XAMPP web server
+  - Mockaroo : used to populate database with dummy data
 
 ## Prerequisites
 
