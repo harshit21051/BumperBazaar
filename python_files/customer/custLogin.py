@@ -110,7 +110,7 @@ def custMenu(csr, custID):
     print("   7)  View orders")
     print("   8)  View profile")
     print("   9)  Add amount to wallet")
-    print("   10)  Change category")
+    print("   10) Change category")
     print("   11) Change email")
     print("   12) Change phone")
     print("   13) Change username")
@@ -122,7 +122,8 @@ def custMenu(csr, custID):
     index.printformat()
     if (opt == 1):
         return browseProd(csr, custID)
-    # add code here
+    elif (opt == 2):
+        return searchProd(csr, custID)
     elif (opt == 3):
         return viewCart(csr, custID)
     elif (opt == 4):

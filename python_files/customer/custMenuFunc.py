@@ -56,6 +56,27 @@ def browseProd(csr, custID):
         print(f"  Price       :\t{x[2]}")
     endFunction(csr, custID)
 
+def searchProd(csr, custID):
+    os.system('cls')
+    print()
+    query = input(" Search for product : ")
+    csr.execute(f'''
+        SELECT ProdName, ProdID, Price FROM Inventory
+        WHERE ProdName LIKE '%{query}%'
+    ''')
+    items = csr.fetchall()
+    if (len(items) == 0):
+        print("\n No results found!")
+    else:
+        print("\n Search results :")
+        for x in items:
+            print()
+            print(f"  {x[0]}")
+            print(" ------------------------------------")
+            print(f"  Product ID  :\t{x[1]}")
+            print(f"  Price       :\t{x[2]}")
+    endFunction(csr, custID)
+
 def viewCart(csr, custID):
     os.system('cls')
     print()
@@ -96,7 +117,8 @@ def profile(csr, custID):
     endFunction(csr, custID)
 
 def addAmt(csr, custID):
-    amt = int(input(" Enter amount to add : "))
+    os.system('cls')
+    amt = int(input("\n Enter amount to add : "))
     csr.execute(f'''
         UPDATE Customers
         SET WalletBalance = WalletBalance + {amt}
@@ -135,6 +157,8 @@ def emptyCart(csr, custID):
     endFunction(csr, custID)
 
 def checkoutCart(csr, custID):
+    os.system('cls')
+    print()
     csr.execute(f'''
         SELECT WalletBalance FROM Customers
         WHERE CustID = {custID}
@@ -231,7 +255,8 @@ def viewOrders(csr, custID):
     endFunction(csr, custID)
 
 def changeCateg(csr, custID):
-    print(f" Choose from below:")
+    os.system('cls')
+    print(f"\n Choose from below:")
     print()
     print("   1)  Normal")
     print("   2)  Prime")
@@ -323,21 +348,17 @@ def changePassword(csr, custID):
 def deactivate(csr, custID):
     os.system('cls')
     print()
-
     confirm = input("  Are you sure? (Y/N): ")
     print()
     if confirm.lower() != "y":
         print("  Deactivation canceled.")
         return endFunction(csr, custID)
-
     password = input("  Enter your password: ")
     print()
-
     getPassword = getCustInfo(csr, custID)['Password']
     if password != getPassword:
         print("  Wrong password. Account deactivation failed.")
         return endFunction(csr, custID)
-
     csr.execute(f'''
         DELETE FROM Customers
         WHERE CustID = {custID}
