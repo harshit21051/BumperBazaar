@@ -122,7 +122,7 @@ def addAmt(csr, custID):
     csr.execute(f'''
         UPDATE Customers
         SET WalletBalance = WalletBalance + {amt}
-        WHERE CustID = '{custID}'
+        WHERE CustID = {custID}
     ''')
     print("\n Amount successfully added !!")
     endFunction(csr, custID)
@@ -136,8 +136,20 @@ def addCart(csr, custID):
         WHERE ProdID = {prodID}
     ''')
     item = csr.fetchall()
+    csr.execute(f'''
+        SELECT * FROM Cart
+        WHERE ProdID = {prodID} AND CustID = {custID}
+    ''')
+    exist = csr.fetchall()
     if (len(item) == 0):
         print("\n Sorry! Product not available")
+    elif (len(exist) != 0):
+        csr.execute(f'''
+            UPDATE Cart
+            SET qty = qty + {qty}
+            WHERE ProdID = {prodID} AND CustID = {custID}
+        ''')
+        print("\n Product successfully added to cart.")
     else:
         csr.execute(f"INSERT INTO Cart VALUES ({custID}, {prodID}, {qty})")
         print("\n Product successfully added to cart.")

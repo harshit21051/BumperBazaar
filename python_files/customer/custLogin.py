@@ -87,14 +87,23 @@ def signup(csr):
     password = input("\n    Password : ")
 
     csr.execute(f'''
-        INSERT INTO Accounts
-        (CustID, Username, Password)
-        VALUES
-        ({cust_id}, '{username}', '{password}')
+        SELECT * FROM Accounts
+        WHERE Username = '{username}'
     ''')
+    exist = csr.fetchone()
+    if exist is not None:
+        print("\n  Email already exists!")
+    else:
+        csr.execute(f'''
+            INSERT INTO Accounts
+            (CustID, Username, Password)
+            VALUES
+            ({cust_id}, '{username}', '{password}')
+        ''')
 
-    print("  Registered successfully!!")
-    csr.execute("COMMIT")
+        print("\n  Registered successfully!!")
+        csr.execute("COMMIT")
+    time.sleep(2)
     custLogin(csr)
 
 def custMenu(csr, custID):

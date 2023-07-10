@@ -44,7 +44,7 @@ USE Bumper_Bazaar;
         CustID INT NOT NULL AUTO_INCREMENT,
         Username VARCHAR(30) NOT NULL,
         Password VARCHAR(30) NOT NULL,
-        PRIMARY KEY (CustID),
+        PRIMARY KEY (CustID, Username),
         FOREIGN KEY (CustID) REFERENCES Customers(CustID) ON DELETE CASCADE
     );
     ALTER TABLE Accounts AUTO_INCREMENT = 1000;
