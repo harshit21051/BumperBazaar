@@ -122,10 +122,11 @@ def custMenu(csr, custID):
     print("   10) Change category")
     print("   11) Change email")
     print("   12) Change phone")
-    print("   13) Change username")
-    print("   14) Change password")
-    print("   15) Deactivate account")
-    print("   16) Logout")
+    print("   13) Change address")
+    print("   14) Change username")
+    print("   15) Change password")
+    print("   16) Deactivate account")
+    print("   17) Logout")
     print()
     opt = int(input(" Enter option : "))
     index.printformat()
@@ -154,10 +155,12 @@ def custMenu(csr, custID):
     elif (opt == 12):
         return changePhone(csr, custID)
     elif (opt == 13):
-        return changeUsername(csr, custID)
+        return changeAddress(csr, custID)
     elif (opt == 14):
-        return changePassword(csr, custID)
+        return changeUsername(csr, custID)
     elif (opt == 15):
+        return changePassword(csr, custID)
+    elif (opt == 16):
         return deactivate(csr, custID)
     else:
         return index.start(csr)

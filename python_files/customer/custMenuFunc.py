@@ -3,22 +3,23 @@ import customer.custLogin as custLogin
 
 def getCustInfo(csr, custID):
     csr.execute(f'''
-        SELECT c.Name, c.Gender, c.Category, c.Email, c.Phone, c.WalletBalance, a.Username, a.Password
-        FROM Customers c
-        JOIN Accounts a ON c.CustID = a.CustID
-        WHERE c.CustID = {custID}
+        SELECT * FROM Customers NATURAL JOIN Address NATURAL JOIN Accounts
+        WHERE CustID = {custID}
     ''')
     result = csr.fetchall()
     if result:
         return {
-            'Name': result[0][0],
-            'Gender': result[0][1],
-            'Category': result[0][2],
-            'Email': result[0][3],
-            'Phone': result[0][4],
-            'WalletBalance': result[0][5],
-            'Username': result[0][6],
-            'Password': result[0][7]
+            'Name': result[0][1],
+            'Gender': result[0][2],
+            'Category': result[0][3],
+            'Email': result[0][4],
+            'Phone': result[0][5],
+            'WalletBalance': result[0][6],
+            'House': result[0][7],
+            'Street': result[0][8],
+            'City': result[0][9],
+            'Username': result[0][10],
+            'Password': result[0][11]
         }
     else: return None
 
@@ -112,6 +113,12 @@ def profile(csr, custID):
     print(f"  Email             : {getCustInfo(csr,custID)['Email']}")
     print()
     print(f"  Phone             : {getCustInfo(csr,custID)['Phone']}")
+    print()
+    print(f"  Username          : {getCustInfo(csr,custID)['Username']}")
+    print()
+    print(f"  Address           : {getCustInfo(csr,custID)['House']}")
+    print(f"                      {getCustInfo(csr,custID)['Street']}")
+    print(f"                      {getCustInfo(csr,custID)['City']}")
     print()
     print(f"  Wallet Balance    : {getCustInfo(csr,custID)['WalletBalance']}")
     endFunction(csr, custID)
@@ -325,6 +332,20 @@ def changePhone(csr, custID):
             WHERE CustID = '{custID}'
         ''')
         print(f"\n  Phone changed successfully!")
+    endFunction(csr, custID)
+
+def changeAddress(csr, custID):
+    os.system('cls')
+    print("\n Enter new address")
+    newHouse = input(f"\n  House       : ")
+    newStreet = input(f"\n  Street      : ")
+    newCity = input(f"\n  City        : ")
+    csr.execute(f'''
+        UPDATE Address
+        SET House = '{newHouse}', Street = '{newStreet}', City = '{newCity}'
+        WHERE CustID = '{custID}'
+    ''')
+    print(f"\n  Address changed successfully!")
     endFunction(csr, custID)
 
 def changeUsername(csr, custID):
