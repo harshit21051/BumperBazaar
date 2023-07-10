@@ -102,50 +102,52 @@ def custMenu(csr, custID):
     print(f" Welcome {name} !!")
     print()
     print("   1)  Browse products")
-    print("   2)  View cart")
-    print("   3)  Add to cart")
-    print("   4)  Empty cart")
-    print("   5)  Checkout cart")
-    print("   6)  View orders")
-    print("   7)  View profile")
-    print("   8)  Add amount to wallet")
-    print("   9)  Change category")
-    print("   10) Change email")
-    print("   11) Change phone")
-    print("   12) Change username")
-    print("   13) Change password")
-    print("   14) Deactivate account")
-    print("   15) Logout")
+    print("   2)  Search for product")
+    print("   3)  View cart")
+    print("   4)  Add to cart")
+    print("   5)  Empty cart")
+    print("   6)  Checkout cart")
+    print("   7)  View orders")
+    print("   8)  View profile")
+    print("   9)  Add amount to wallet")
+    print("   10)  Change category")
+    print("   11) Change email")
+    print("   12) Change phone")
+    print("   13) Change username")
+    print("   14) Change password")
+    print("   15) Deactivate account")
+    print("   16) Logout")
     print()
     opt = int(input(" Enter option : "))
     index.printformat()
     if (opt == 1):
         return browseProd(csr, custID)
-    elif (opt == 2):
-        return viewCart(csr, custID)
+    # add code here
     elif (opt == 3):
-        return addCart(csr, custID)
+        return viewCart(csr, custID)
     elif (opt == 4):
-        return emptyCart(csr, custID)
+        return addCart(csr, custID)
     elif (opt == 5):
-        return checkoutCart(csr, custID)
+        return emptyCart(csr, custID)
     elif (opt == 6):
-        return viewOrders(csr, custID)
+        return checkoutCart(csr, custID)
     elif (opt == 7):
-        return profile(csr, custID)
+        return viewOrders(csr, custID)
     elif (opt == 8):
-        return addAmt(csr, custID)
+        return profile(csr, custID)
     elif (opt == 9):
-        return changeCateg(csr, custID)
+        return addAmt(csr, custID)
     elif (opt == 10):
-        return changeEmail(csr, custID)
+        return changeCateg(csr, custID)
     elif (opt == 11):
-        return changePhone(csr, custID)
+        return changeEmail(csr, custID)
     elif (opt == 12):
-        return changeUsername(csr, custID)
+        return changePhone(csr, custID)
     elif (opt == 13):
-        return changePassword(csr, custID)
+        return changeUsername(csr, custID)
     elif (opt == 14):
+        return changePassword(csr, custID)
+    elif (opt == 15):
         return deactivate(csr, custID)
     else:
         return index.start(csr)
