@@ -21,6 +21,6 @@
 
 <!--
 Links:
-1. http://localhost/BumperBazaar/sql_backend/view_tables - To open the php file
+1. http://localhost/BumperBazaar/html_files/ - To open the php file
 2. http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar - To see the database in phpmyadmin
 -->
