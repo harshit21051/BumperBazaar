@@ -31,4 +31,4 @@ To ensure proper functioning of the BumperBazaar website, please follow these st
       - Open the following link: http://localhost/BumperBazaar-main/html_files/.
       - To access the database portal (phpMyAdmin), visit: http://localhost/phpmyadmin/index.php?route=/database/structure&db=bumper_bazaar.
 
-Enjoy using BumperBazaar for your online shopping needs! Should you have any questions or encounter any issues, please don't hesitate to contact us.
+Enjoy using BumperBazaar for your online shopping needs! Should you have any questions or encounter any issues, please don't hesitate to contact us at harshit21051@iiitd.ac.in.
