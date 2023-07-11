@@ -21,7 +21,7 @@ To ensure proper functioning of the BumperBazaar website, please follow these st
 
   - Install XAMPP from their official website: https://www.apachefriends.org/download.html.
   - Configure XAMPP properly by referring to this video tutorial: https://www.youtube.com/watch?v=at19OmH2Bg4&list=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&index=1&t=7s.
-  - Clone the BumperBazaar repository and store it in the following directory: C:\xampp\htdocs.
+  - Clone the BumperBazaar repository and extract the zip file in the following directory: C:\xampp\htdocs.
   - Import the schema.sql file into MySQL Workbench and execute it. Then, import the dataset.sql file. This will create the necessary database and populate it with data.
   - To run the Python program:
       - Navigate to the python_files directory and run index.py.
