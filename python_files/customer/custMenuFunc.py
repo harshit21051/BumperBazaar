@@ -258,7 +258,7 @@ def viewOrders(csr, custID):
     os.system('cls')
     print()
     csr.execute(f'''
-        SELECT OrderID, Status
+        SELECT OrderID, Amount, PayMode, Status
         FROM Orders
         WHERE CustID = {custID}
     ''')
@@ -270,7 +270,9 @@ def viewOrders(csr, custID):
         for x in orders:
             print()
             print(f"  Order ID  :\t{x[0]}")
-            print(f"  Status    :\t{x[1]}")
+            print(f"  Amount    :\t{x[1]}")
+            print(f"  Mode      :\t{x[2]}")
+            print(f"  Status    :\t{x[3]}")
     endFunction(csr, custID)
 
 def changeCateg(csr, custID):
